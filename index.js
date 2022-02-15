@@ -20,7 +20,7 @@ let mochila = [];
 
 let personagem = {
   // Status do personagem
-  status: function() {
+  status: function () {
     console.log(`Vida: ${vida}%`);
     console.log(`Energia: ${energia}%`);
     console.log(`Fome: ${fome}%`);
@@ -33,7 +33,7 @@ let personagem = {
   },
   // ------------------------------
   // Sistema de Usar Intens
-  usarIntens: function() {
+  usarIntens: function () {
     while (continuar != `n`) {
       let intens = [`[1] Rémedio`, `[2] Energético`, `[3] Comida`, `[4] Água`];
       for (intem of intens) {
@@ -227,8 +227,8 @@ let bookDosInimigos = {
   sala1: `Dano = 10% (dano normal) e 15% (dano critico) | Com 100% de Vida. `,
   sala2: `Dano = 15% (dano normal) e 20% (dano critico) | Com 110% de Vida. `,
   sala3: `Dano = 20% (dano normal) e 25% (dano critico) | Com 120% de Vida. `,
-  boss: `Dano = 25% (dano normal) e 30% (dano critico) | Com 200% de Vida. `
-}
+  boss: `Dano = 25% (dano normal) e 30% (dano critico) | Com 200% de Vida. `,
+};
 
 function combate() {
   vida;
@@ -241,7 +241,7 @@ function combate() {
     vidaoponente = 200;
   }
   let rodada = 0;
-  if (cachorro == `companheiro`) {
+  if (cachorro.length == 1) {
     console.log(`O seu cachorro aplica o golpe inicial no inimigo.`);
     vidaoponente = vidaoponente - 20;
     console.log(`Dano no oponente = 20%`);
@@ -437,7 +437,7 @@ function combate() {
 
 // Sistema de achar tesouros
 let tesouro = {
-  chance: function() {
+  chance: function () {
     let achar = Math.trunc(Math.random() * 10);
     if (achar <= 7) {
       let moedas = Math.trunc(Math.random() * 200);
@@ -451,7 +451,7 @@ let tesouro = {
     }
   },
 
-  final: function() {
+  final: function () {
     let moedas = Math.trunc(Math.random() * 1000);
     console.log(`Você achou ${moedas} moedas dentro do baú.`);
     dinheiro = dinheiro + moedas;
@@ -533,7 +533,7 @@ for (i = 0; i < 3; i++) {
     }
     continuar = prompt(`Pressione Enter para continuar: `);
 
-    let turnos = 5
+    let turnos = 5;
     //Math.trunc(Math.random() * 6 + 4);
 
     console.log(
@@ -550,19 +550,19 @@ for (i = 0; i < 3; i++) {
         if (sala == 1) {
           inimigo = inimigos1[Math.floor(Math.random() * inimigos1.length)];
           console.log(`Você encontra um ${inimigo}. Hora do combate!!!`);
-          console.log(`Detalhes do inimigo: ${bookDosInimigos.sala1}`)
+          console.log(`Detalhes do inimigo: ${bookDosInimigos.sala1}`);
           continuar = prompt(`Pressione Enter para continuar: `);
           combate();
         } else if (sala == 2) {
           inimigo = inimigos2[Math.floor(Math.random() * inimigos2.length)];
           console.log(`Você encontra um ${inimigo}. Hora do combate!!!`);
-          console.log(`Detalhes do inimigo: ${bookDosInimigos.sala2}`)
+          console.log(`Detalhes do inimigo: ${bookDosInimigos.sala2}`);
           continuar = prompt(`Pressione Enter para continuar: `);
           combate();
         } else if (sala == 3) {
           inimigo = inimigos3[Math.floor(Math.random() * inimigos3.length)];
           console.log(`Você encontra uma ${inimigo}. Hora do combate!!!`);
-          console.log(`Detalhes do inimigo: ${bookDosInimigos.sala3}`)
+          console.log(`Detalhes do inimigo: ${bookDosInimigos.sala3}`);
           continuar = prompt(`Pressione Enter para continuar: `);
           combate();
         }
@@ -606,7 +606,9 @@ for (i = 0; i < 3; i++) {
                 energetico = energetico - 1;
                 comida = comida - 1;
                 agua = agua - 1;
-                console.log(`Você aceita ajudar o homem, que fica muito feliz por você ter ajudado ele. Ele se recupera, e finalmente ele está pronto para sair e voltar para casa, ele lhe agradece novamente e vocês se despedem.`)
+                console.log(
+                  `Você aceita ajudar o homem, que fica muito feliz por você ter ajudado ele. Ele se recupera, e finalmente ele está pronto para sair e voltar para casa, ele lhe agradece novamente e vocês se despedem.`
+                );
                 personagem.status();
               } else {
                 console.log(
@@ -662,10 +664,10 @@ for (i = 0; i < 3; i++) {
               console.log(
                 `Então você decide lutar com os bandidos para não perder todos seus intens.`
               );
-              console.log(`Primeiro bandido:`)
+              console.log(`Primeiro bandido:`);
               for (i = 0; i < 2; i++) {
                 continuar = prompt(`Pressione Enter para continuar: `);
-                console.log(`Proximo bandido:`)
+                console.log(`Proximo bandido:`);
                 combate();
               }
             }
@@ -785,18 +787,22 @@ for (i = 0; i < 3; i++) {
                   `Você ajuda o cachorro, alimentando-o e lhe dando água. Com seu gesto de generosidade, o cachorro começa lhe seguir por sua jornada, sendo seu fiel companheiro até o fim e lhe ajudando nos combates.`
                 );
                 personagem.status();
-                cachorro.push(companheiro)
+                cachorro.push(1);
               } else {
                 console.log(
                   `Você não possui intens suficientes para ajudar o cachorro.`
                 );
+                cachorro.push(1);
+                cachorro.push(2);
               }
             } else if (escolher == `2`) {
               console.log(
                 `Você decide não ajudar o cachorro, passando direto por ele.`
               );
+              cachorro.push(1);
+              cachorro.push(2);
             }
-            cachorro.push(1);
+
             continuar = prompt(`Pressione Enter para continuar: `);
           } else {
             console.log(`Você passa o turno sem incidente.`);
@@ -821,37 +827,32 @@ for (i = 0; i < 3; i++) {
       personagem.status();
 
       continuar = prompt(`Pressione Enter para ir para a próxima sala: `);
-    } else {
-      //console.log(`GAME OVER`);
     }
-  } else {
-    //console.log (`GAME OVER`)
   }
-}
-if (vida < 0) {
-  //console.log(`GAME OVER`);
 }
 //}
 if (vida > 0) {
   console.log(
     `Você chega no fim da masmorra, e se depara com um ${boss}, seu Final Boss. Derrote seu chefão e zere a masmorra.`
   );
-  console.log(`Detalhes do inimigo: ${bookDosInimigos.boos}`)
+  console.log(`Detalhes do inimigo: ${bookDosInimigos.boss}`);
   continuar = prompt(`Pressione Enter para continuar: `);
-  sala = `4`
+  sala = `4`;
   combate();
   if (vida > 0) {
     console.log(`PARABÉNS, VOCÊ COMPLETOU A MASMORRA!!!!!!`);
     console.log(
       `Por ter derrotado o Chefão e terminado a masmorra, você acha o tesouro final, uma sala com uma montanha de moedas, que era guardada pelo ${boss}`
     );
-    console.log(`Prêmio: 100000 MOEDAS`)
+    console.log(`Prêmio: 100000 MOEDAS`);
     dinheiro = dinheiro + 100000;
     personagem.status();
     console.log(`Muito obrigado por jogar Dungeon Line`);
     console.log(`FIM`);
   }
 } else {
-  console.log(`Você fracassou em sua missão de explorar a Masmorra e acabou morrendo.`)
-  console.log(`----------GAME OVER----------`)
+  console.log(
+    `Você fracassou em sua missão de explorar a Masmorra e acabou morrendo.`
+  );
+  console.log(`----------GAME OVER----------`);
 }
