@@ -410,7 +410,6 @@ function combate() {
   if (vida <= 0) {
     console.log(`Vida do oponente: ${vidaoponente}% | Sua vida: ${vida}%`);
     console.log(`Você perdeu o combate.`);
-    //console.log(`GAME OVER`);
   } else if (vidaoponente <= 0) {
     console.log(`Oponente foi derrotado.`);
     console.log(`VOCÊ VENCEU O COMBATE`);
@@ -523,7 +522,6 @@ continuar = prompt(`Pressione Enter para continuar: `);
 let escolher;
 let sala = 1;
 
-//while (vida > 0) {
 for (i = 0; i < 3; i++) {
   if (vida > 0) {
     if (sala <= 3) {
@@ -534,7 +532,6 @@ for (i = 0; i < 3; i++) {
     continuar = prompt(`Pressione Enter para continuar: `);
 
     let turnos = 5;
-    //Math.trunc(Math.random() * 6 + 4);
 
     console.log(
       `Você chegou na sala ${sala}, levará ${turnos} turnos para percorre-la.`
@@ -544,7 +541,6 @@ for (i = 0; i < 3; i++) {
 
     while (jogadas < turnos && vida > 0) {
       console.log(`Turno ${jogadas + 1} `);
-      // let sala = ["combate", "tesouro", "livre", "evento"];
       let aleatorio = Math.floor(Math.random() * 100);
       if (aleatorio <= 30) {
         if (sala == 1) {
@@ -830,7 +826,6 @@ for (i = 0; i < 3; i++) {
     }
   }
 }
-//}
 if (vida > 0) {
   console.log(
     `Você chega no fim da masmorra, e se depara com um ${boss}, seu Final Boss. Derrote seu chefão e zere a masmorra.`
